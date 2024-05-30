@@ -16,7 +16,7 @@ const NameScreen = () => {
   const navigation = useNavigation();
 
   const handleNext = () => {
-    navigation.navigate('Email');
+    navigation.navigate('Birth');
   };
 
   return (
