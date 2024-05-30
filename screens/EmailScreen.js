@@ -48,6 +48,7 @@ const EmailScreen = () => {
             fontWeight: 'bold',
             fontFamily: 'GeezaPro-Bold',
             marginTop: 15,
+            color: 'black',
           }}>
           Insira um Email valido
         </Text>
