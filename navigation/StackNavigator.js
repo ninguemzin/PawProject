@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from '../screens/HomeScreen';
 import LikesScreen from '../screens/LikesScreen';
 import ChatScreen from '../screens/ChatScreen';
@@ -10,7 +11,6 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {NavigationContainer} from '@react-navigation/native';
 import BasicInfo from '../screens/BasicInfo';
 import BirthScreen from '../screens/BirthScreen';
 import NameScreen from '../screens/NameScreen';
@@ -21,6 +21,11 @@ import GenderScreen from '../screens/GenderScreen';
 import TypeScreen from '../screens/TypeScreen';
 import DatingScreen from '../screens/DatingType';
 import LookingFor from '../screens/LookingFor';
+import HomeTownScreen from '../screens/HomeTownScreen';
+import PhotosScreen from '../screens/PhotoScreen';
+import PromptsScreen from '../screens/PromptsScreen';
+import ShowPromptsScreen from '../screens/ShowPromptsScreen';
+import PreFinalScreen from '../screens/PreFinalScreen';
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -132,13 +137,8 @@ const StackNavigator = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Birth"
-          component={BirthScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
           name="Location"
-          component={LocatioSceen}
+          component={LocationScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -163,7 +163,7 @@ const StackNavigator = () => {
         />
         <Stack.Screen
           name="Looking"
-          component={LookingScreen}
+          component={LookingFor}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -187,18 +187,8 @@ const StackNavigator = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Prompts"
-          component={PromptsScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
           name="PreFinal"
           component={PreFinalScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Prompts"
-          component={PromptsScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
@@ -218,7 +208,7 @@ const StackNavigator = () => {
   }
   return (
     <NavigationContainer>
-      <MainStack />
+      <AuthStack />
     </NavigationContainer>
   );
 };
