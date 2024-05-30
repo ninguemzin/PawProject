@@ -1,11 +1,13 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
 import React from 'react';
 
 const BasicInfo = () => {
   return (
-    <View>
-      <Text>BasicInfo</Text>
-    </View>
+    <SafeAreaView style={{flex: length, backgroundColor: 'white'}}>
+      <View>
+        <Text>YOURE ONE AR A AKINF</Text>
+      </View>
+    </SafeAreaView>
   );
 };
 
