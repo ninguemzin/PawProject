@@ -11,6 +11,16 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {NavigationContainer} from '@react-navigation/native';
+import BasicInfo from '../screens/BasicInfo';
+import BirthScreen from '../screens/BirthScreen';
+import NameScreen from '../screens/NameScreen';
+import EmailScreen from '../screens/EmailScreen';
+import PasswordScreen from '../screens/PasswordScreen';
+import LocationScreen from '../screens/LocationScreen';
+import GenderScreen from '../screens/GenderScreen';
+import TypeScreen from '../screens/TypeScreen';
+import DatingScreen from '../screens/DatingType';
+import LookingFor from '../screens/LookingFor';
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -30,7 +40,7 @@ const StackNavigator = () => {
             headerShown: false,
             tabBarIcon: ({focused}) =>
               focused ? (
-                <MaterialCommunityIcons name="alpha" size={35} color="white" />
+                <MaterialCommunityIcons name="alpha" size={35} color="red" />
               ) : (
                 <MaterialCommunityIcons
                   name="alpha"
@@ -48,7 +58,7 @@ const StackNavigator = () => {
             headerShown: false,
             tabBarIcon: ({focused}) =>
               focused ? (
-                <Entypo name="heart" size={35} color="white" />
+                <Entypo name="heart" size={35} color="red" />
               ) : (
                 <Entypo name="heart" size={30} color="#989898" />
               ),
@@ -65,7 +75,7 @@ const StackNavigator = () => {
                 <MaterialIcons
                   name="chat-bubble-outline"
                   size={35}
-                  color="white"
+                  color="red"
                 />
               ) : (
                 <MaterialIcons
@@ -84,11 +94,7 @@ const StackNavigator = () => {
             headerShown: false,
             tabBarIcon: ({focused}) =>
               focused ? (
-                <Ionicons
-                  name="person-circle-outline"
-                  size={35}
-                  color="white"
-                />
+                <Ionicons name="person-circle-outline" size={35} color="red" />
               ) : (
                 <Ionicons
                   name="person-circle-outline"
@@ -101,6 +107,103 @@ const StackNavigator = () => {
       </Tab.Navigator>
     );
   }
+
+  const AuthStack = () => {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Basic"
+          component={BasicInfo}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Name"
+          component={NameScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Email"
+          component={EmailScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Password"
+          component={PasswordScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Birth"
+          component={BirthScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Location"
+          component={LocatioSceen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Gender"
+          component={GenderScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Birth"
+          component={BirthScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Type"
+          component={TypeScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Dating"
+          component={DatingScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Looking"
+          component={LookingScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="HomeTownScreen"
+          component={HomeTownScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Photos"
+          component={PhotosScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Prompts"
+          component={PromptsScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ShowPrompts"
+          component={ShowPromptsScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Prompts"
+          component={PromptsScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="PreFinal"
+          component={PreFinalScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Prompts"
+          component={PromptsScreen}
+          options={{headerShown: false}}
+        />
+      </Stack.Navigator>
+    );
+  };
 
   function MainStack() {
     return (
