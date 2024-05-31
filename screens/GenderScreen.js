@@ -17,7 +17,7 @@ const GenderScreen = () => {
   const [gender, setGender] = useState('');
   const navigation = useNavigation();
   const handleNext = () => {
-    navigation.navigate('Type');
+    navigation.navigate('Dating');
   };
 
   return (
