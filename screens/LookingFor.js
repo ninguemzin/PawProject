@@ -16,7 +16,7 @@ import {useNavigation} from '@react-navigation/native';
 const LookingFor = () => {
   const navigation = useNavigation();
   const handleNext = () => {
-    navigation.navigate('HomeTownScreen');
+    navigation.navigate('Photos');
   };
   const [lookingFor, setLookingfor] = useState('');
 
