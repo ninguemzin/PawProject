@@ -9,14 +9,17 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
+import {saveRegistrationProgress} from '../registrationUltils';
 
 const PasswordScreen = () => {
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
   const handleNext = () => {
+    if (password.trim() !== '') {
+      saveRegistrationProgress('Password', {password});
+    }
     navigation.navigate('Birth');
   };
 
