@@ -133,7 +133,9 @@ const PhotoScreen = () => {
           </View>
         </View>
         <View style={{marginVertical: 10}}>
-          <Text style={{color: 'gray', fontSize: 15}}>Drag to reorder</Text>
+          <Text style={{color: 'gray', fontSize: 15}}>
+            Arraste para reordenar
+          </Text>
           <Text
             style={{
               fontSize: 15,
@@ -141,40 +143,10 @@ const PhotoScreen = () => {
               color: '#581845',
               marginTop: 3,
             }}>
-            Add four to six photos
+            Adicione quatro a seis fotos
           </Text>
         </View>
-        <View style={{marginTop: 25}}>
-          <Text>Add a picture of yourself</Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: 5,
-              paddingVertical: 5,
-              borderRadius: 5,
-              marginTop: 10,
-              backgroundColor: '#DCDCDC',
-            }}>
-            <EvilIcons
-              style={{marginLeft: 8}}
-              name="image"
-              size={22}
-              color="black"
-            />
-            <TextInput
-              value={imageUrl}
-              onChangeText={text => setImageUrl(text)}
-              style={{color: 'gray', marginVertical: 10, width: 300}}
-              placeholder="enter your image url"
-            />
-          </View>
-          <Button
-            onPress={handleAddImage}
-            style={{marginTop: 5}}
-            title="Add Image"
-          />
-        </View>
+        <View style={{marginTop: 25}}></View>
         <TouchableOpacity
           onPress={handleNext}
           activeOpacity={0.8}
