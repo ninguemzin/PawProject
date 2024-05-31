@@ -4,7 +4,11 @@ import React from 'react';
 const HomeTownScreen = () => {
   return (
     <SafeAreaView>
-      <Text>HomeTownScreen</Text>
+      <View>
+        <View>
+          <View></View>
+        </View>
+      </View>
     </SafeAreaView>
   );
 };
