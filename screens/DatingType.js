@@ -41,7 +41,7 @@ const DatingType = () => {
     if (datingPreferences.length > 0) {
       saveRegistrationProgress('Dating', {datingPreferences});
     }
-    navigation.navigate('Looking');
+    navigation.navigate('LookingFor');
   };
 
   return (
