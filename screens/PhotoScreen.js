@@ -5,6 +5,8 @@ import {
   SafeAreaView,
   Image,
   Pressable,
+  TextInput,
+  Button,
   TouchableOpacity,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
@@ -161,6 +163,39 @@ const PhotoScreen = () => {
             Adicione quatro a seis fotos
           </Text>
         </View>
+
+        <View style={{marginTop: 25}}>
+          <Text>Add a picture of yourself</Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 5,
+              paddingVertical: 5,
+              borderRadius: 5,
+              marginTop: 10,
+              backgroundColor: '#DCDCDC',
+            }}>
+            <EvilIcons
+              style={{marginLeft: 8}}
+              name="image"
+              size={22}
+              color="black"
+            />
+            <TextInput
+              value={imageUrl}
+              onChangeText={text => setImageUrl(text)}
+              style={{color: 'gray', marginVertical: 10, width: 300}}
+              placeholder="enter your image url"
+            />
+          </View>
+          <Button
+            onPress={handleAddImage}
+            style={{marginTop: 5}}
+            title="Add Image"
+          />
+        </View>
+
         <View style={{marginTop: 25}}></View>
         <TouchableOpacity
           onPress={handleNext}

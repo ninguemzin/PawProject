@@ -41,7 +41,7 @@ const LocationScreen = () => {
       setRegion({...region, latitude, longitude});
 
       fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyDJqEKwV49K0ycxK_os6f9ZgKuv6pJHINA`,
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyBJWO5eCr6iTUSZbrlS3vjvUflnm8t-HQ0`,
       )
         .then(response => response.json())
         .then(data => {
@@ -56,7 +56,7 @@ const LocationScreen = () => {
   console.log('location', location);
   const handleMarkerDragEnd = coordinate => {
     fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinate.latitude},${coordinate.longitude}&key=AIzaSyDJqEKwV49K0ycxK_os6f9ZgKuv6pJHINA`,
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinate.latitude},${coordinate.longitude}&key=AIzaSyBJWO5eCr6iTUSZbrlS3vjvUflnm8t-HQ0`,
     )
       .then(response => response.json())
       .then(data => {
