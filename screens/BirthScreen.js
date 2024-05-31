@@ -6,10 +6,14 @@ import {
   Image,
   View,
 } from 'react-native';
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {
+  getRegistrationProgress,
+  saveRegistrationProgress,
+} from '../registrationUltils';
 
 const BirthScreen = () => {
   const navigation = useNavigation();
@@ -37,7 +41,23 @@ const BirthScreen = () => {
     setYear(text);
   };
 
+  useEffect(() => {
+    getRegistrationProgress('Birth').then(progressData => {
+      if (progressData) {
+        const {dateOFBirth} = progressData;
+        const [dayValue, monthValue, yearValue] = dateOFBirth.split('/');
+        setDay(dayValue);
+        setMonth(monthValue);
+        setYear(yearValue);
+      }
+    });
+  });
+
   const handleNext = () => {
+    if (day.trim() !== '' && month.trim() !== '' && year.trim() !== '') {
+      const dateOFBirth = `${day}/${month}/${year}`;
+      saveRegistrationProgress('Birth', {dateOFBirth});
+    }
     navigation.navigate('Location');
   };
 
