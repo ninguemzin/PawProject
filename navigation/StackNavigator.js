@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useCallback, useContext} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
@@ -26,10 +26,12 @@ import PromptsScreen from '../screens/PromptsScreen';
 import ShowPromptsScreen from '../screens/ShowPromptsScreen';
 import PreFinalScreen from '../screens/PreFinalScreen';
 import PhotoScreen from '../screens/PhotoScreen';
+import {AuthContext} from '../AuthContext';
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
   const Tab = createBottomTabNavigator();
+  const {isLoading, token} = useContext(AuthContext);
 
   function BottonTabs() {
     return (
@@ -153,7 +155,7 @@ const StackNavigator = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Looking"
+          name="LookingFor"
           component={LookingFor}
           options={{headerShown: false}}
         />
@@ -169,7 +171,7 @@ const StackNavigator = () => {
         />
         <Stack.Screen
           name="Photos"
-          component={PhotosScreen}
+          component={PhotoScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -204,7 +206,7 @@ const StackNavigator = () => {
   }
   return (
     <NavigationContainer>
-      <AuthStack />
+      {token === null || token === '' ? <AuthStack /> : <MainStack />}
     </NavigationContainer>
   );
 };
