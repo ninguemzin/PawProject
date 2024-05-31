@@ -1,9 +1,73 @@
 import {StyleSheet, Text, View, SafeAreaView, Pressable} from 'react-native';
-import React from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import LottieView from 'lottie-react-native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
+import {AuthContext} from '../AuthContext';
+import {
+  getRegistrationProgress,
+  saveRegistrationProgress,
+} from '../registrationUltils';
+import axios from 'axios';
+import {useRoute} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const PreFinalScreen = () => {
+  const [userData, setUserData] = useState();
+  const {token, setToken} = useContext(AuthContext);
+  const navigation = useNavigation();
+  useEffect(() => {
+    if (token) {
+      navigation.replace('MainStack', {screen: 'Main'});
+    }
+  }, [token]);
+
+  useEffect(() => {
+    getAllUserData();
+  }, []);
+  const getAllUserData = async () => {
+    try {
+      const screens = [
+        'Name',
+        'Email',
+        'Password',
+        'Birth',
+        'Location',
+        'Gender',
+        'Dating',
+        'LookingFor',
+        'Photos',
+        'Prompts',
+      ];
+
+      let userData = {};
+
+      for (const screenName of screens) {
+        const screenData = await getRegistrationProgress(screenName);
+        if (screenData) {
+          userData = {...userData, ...screenData};
+        }
+      }
+      setUserData(userData);
+    } catch (error) {
+      console.log('Error', error);
+    }
+  };
+  const registerUser = async () => {
+    try {
+      const response = await axios
+        .post('http://localhost:3000/register', userData)
+        .then(response => {
+          console.log(response);
+          const token = response.data.token;
+          AsyncStorage.setItem('token', token);
+          setToken(token);
+        });
+    } catch (error) {
+      console.log('Register Error', error);
+    }
+  };
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
       <View style={{marginTop: 80}}>
@@ -45,6 +109,7 @@ const PreFinalScreen = () => {
       </View>
 
       <Pressable
+        onPress={registerUser}
         style={{backgroundColor: '#900C3F', padding: 15, marginTop: 'auto'}}>
         <Text
           style={{
