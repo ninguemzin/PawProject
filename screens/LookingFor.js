@@ -7,18 +7,32 @@ import {
   Pressable,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
+import {
+  getRegistrationProgress,
+  saveRegistrationProgress,
+} from '../registrationUltils';
 
 const LookingFor = () => {
+  const [lookingFor, setLookingFor] = useState('');
   const navigation = useNavigation();
+  useEffect(() => {
+    getRegistrationProgress('LookingFor').then(progressData => {
+      if (progressData) {
+        setLookingFor(progressData.lookingFor || '');
+      }
+    });
+  }, []);
   const handleNext = () => {
-    navigation.navigate('Hometown');
+    if (lookingFor.trim() !== '') {
+      saveRegistrationProgress('LookingFor', {lookingFor});
+    }
+    navigation.navigate('Photos');
   };
-  const [lookingFor, setLookingfor] = useState('');
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
@@ -65,7 +79,7 @@ const LookingFor = () => {
             <Text style={{fontWeight: '500', fontSize: 15}}>
               Procurando um amigo para seu Pet
             </Text>
-            <Pressable onPress={() => setLookingfor('Life Partner')}>
+            <Pressable onPress={() => setLookingFor('Life Partner')}>
               <FontAwesome
                 name="circle"
                 size={26}
@@ -83,7 +97,7 @@ const LookingFor = () => {
             <Text style={{fontWeight: '500', fontSize: 15}}>
               Procurando um relacionamento para seu Pet
             </Text>
-            <Pressable onPress={() => setLookingfor('Long-term relationship')}>
+            <Pressable onPress={() => setLookingFor('Long-term relationship')}>
               <FontAwesome
                 name="circle"
                 size={26}
@@ -105,7 +119,7 @@ const LookingFor = () => {
             </Text>
             <Pressable
               onPress={() =>
-                setLookingfor('Long-term relationship open to short')
+                setLookingFor('Long-term relationship open to short')
               }>
               <FontAwesome
                 name="circle"

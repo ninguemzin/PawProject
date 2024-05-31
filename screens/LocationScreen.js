@@ -82,6 +82,7 @@ const LocationScreen = () => {
       .catch(error => console.log('Error fetching the location'));
   };
   const handleNext = () => {
+    //saveRegistrationProgress('Location', {location});
     navigation.navigate('Gender');
   };
   return (
