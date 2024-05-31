@@ -10,11 +10,13 @@ import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useRoute, useNavigation} from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {saveRegistrationProgress} from '../registrationUltils';
 
 const PromptsScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const handleNext = () => {
+    saveRegistrationProgress('Prompts', {prompt: route?.params?.prompts});
     navigation.navigate('PreFinal');
   };
   return (
