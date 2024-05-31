@@ -20,7 +20,7 @@ const PromptsScreen = () => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <AntDesign name="photo-camera-back" size={22} color="black" />
+            <AntDesign name="eye" size={22} color="black" />
           </View>
 
           <Image
@@ -92,7 +92,7 @@ const PromptsScreen = () => {
                     fontStyle: 'italic',
                     fontSize: 15,
                   }}>
-                  Select a Prompt
+                  Selecione um prompt
                 </Text>
                 <Text
                   style={{
@@ -101,7 +101,7 @@ const PromptsScreen = () => {
                     fontSize: 15,
                     marginTop: 3,
                   }}>
-                  And Write your own answer
+                  Escreva sua própria resposta
                 </Text>
               </Pressable>
 
@@ -123,7 +123,7 @@ const PromptsScreen = () => {
                     fontStyle: 'italic',
                     fontSize: 15,
                   }}>
-                  Select a Prompt
+                  Selecione um prompt
                 </Text>
                 <Text
                   style={{
@@ -132,7 +132,7 @@ const PromptsScreen = () => {
                     fontSize: 15,
                     marginTop: 3,
                   }}>
-                  And Write your own answer
+                  Escreva sua própria resposta
                 </Text>
               </Pressable>
 
@@ -155,7 +155,7 @@ const PromptsScreen = () => {
                     fontStyle: 'italic',
                     fontSize: 15,
                   }}>
-                  Select a Prompt
+                  Selecione um prompt
                 </Text>
                 <Text
                   style={{
@@ -165,7 +165,7 @@ const PromptsScreen = () => {
                     fontSize: 15,
                     marginTop: 3,
                   }}>
-                  And Write your own answer
+                  Escreva sua própria resposta
                 </Text>
               </Pressable>
             </View>
