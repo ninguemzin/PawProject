@@ -25,6 +25,7 @@ import PhotosScreen from '../screens/PhotoScreen';
 import PromptsScreen from '../screens/PromptsScreen';
 import ShowPromptsScreen from '../screens/ShowPromptsScreen';
 import PreFinalScreen from '../screens/PreFinalScreen';
+import PhotoScreen from '../screens/PhotoScreen';
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();

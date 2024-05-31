@@ -25,6 +25,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import StackNavigator from './navigation/StackNavigator';
+import {ModalPortal} from 'react-native-modals';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -36,6 +37,7 @@ function App() {
   return (
     <>
       <StackNavigator />
+      <ModalPortal />
     </>
   );
 }

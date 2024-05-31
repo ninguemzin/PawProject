@@ -7,15 +7,30 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
+import {
+  getRegistrationProgress,
+  saveRegistrationProgress,
+} from '../registrationUltils';
 
 const NameScreen = () => {
   const [firstName, setFirstName] = useState('');
   const navigation = useNavigation();
 
+  useEffect(() => {
+    getRegistrationProgress('Name').then(progressData => {
+      if (progressData) {
+        setFirstName(progressData.firstName || '');
+      }
+    });
+  }, []);
+
   const handleNext = () => {
+    if (firstName.trim() !== '') {
+      saveRegistrationProgress('Name', {firstName});
+    }
     navigation.navigate('Email');
   };
 
