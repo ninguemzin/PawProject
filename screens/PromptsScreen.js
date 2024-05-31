@@ -1,7 +1,11 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image, Pressable} from 'react-native';
 import React from 'react';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useRoute, useNavigation} from '@react-navigation/native';
 
 const PromptsScreen = () => {
+  const route = useRoute();
+  const navigation = useNavigation();
   return (
     <View>
       <View style={{marginTop: 90, marginHorizontal: 20}}>
@@ -35,6 +39,138 @@ const PromptsScreen = () => {
           }}>
           Escreva as respostas do seu perfil
         </Text>
+
+        <View style={{marginTop: 20, flexDirection: 'column', gap: 20}}>
+          {route?.params?.prompts ? (
+            route?.params?.prompts.map((item, index) => (
+              <Pressable
+                onPress={() => navigation.navigate('ShowPrompts')}
+                style={{
+                  borderColor: '#707070',
+                  borderWidth: 2,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderStyle: 'dashed',
+                  borderRadius: 10,
+                  height: 70,
+                }}>
+                <Text
+                  style={{
+                    fontWeight: '600',
+                    fontStyle: 'italic',
+                    fontSize: 15,
+                  }}>
+                  {item?.question}
+                </Text>
+                <Text
+                  style={{
+                    fontWeight: '600',
+                    fontStyle: 'italic',
+                    fontSize: 15,
+                    marginTop: 3,
+                  }}>
+                  {item?.answer}
+                </Text>
+              </Pressable>
+            ))
+          ) : (
+            <View>
+              <Pressable
+                onPress={() => navigation.navigate('ShowPrompts')}
+                style={{
+                  borderColor: '#707070',
+                  borderWidth: 2,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderStyle: 'dashed',
+                  borderRadius: 10,
+                  height: 70,
+                }}>
+                <Text
+                  style={{
+                    fontWeight: '600',
+                    fontStyle: 'italic',
+                    fontSize: 15,
+                  }}>
+                  Select a Prompt
+                </Text>
+                <Text
+                  style={{
+                    fontWeight: '600',
+                    fontStyle: 'italic',
+                    fontSize: 15,
+                    marginTop: 3,
+                  }}>
+                  And Write your own answer
+                </Text>
+              </Pressable>
+
+              <Pressable
+                onPress={() => navigation.navigate('ShowPrompts')}
+                style={{
+                  marginTop: 20,
+                  borderColor: '#707070',
+                  borderWidth: 2,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderStyle: 'dashed',
+                  borderRadius: 10,
+                  height: 70,
+                }}>
+                <Text
+                  style={{
+                    fontWeight: '600',
+                    fontStyle: 'italic',
+                    fontSize: 15,
+                  }}>
+                  Select a Prompt
+                </Text>
+                <Text
+                  style={{
+                    fontWeight: '600',
+                    fontStyle: 'italic',
+                    fontSize: 15,
+                    marginTop: 3,
+                  }}>
+                  And Write your own answer
+                </Text>
+              </Pressable>
+
+              <Pressable
+                onPress={() => navigation.navigate('ShowPrompts')}
+                style={{
+                  marginTop: 20,
+                  borderColor: '#707070',
+                  borderWidth: 2,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderStyle: 'dashed',
+                  borderRadius: 10,
+                  height: 70,
+                }}>
+                <Text
+                  style={{
+                    color: 'gray',
+                    fontWeight: '600',
+                    fontStyle: 'italic',
+                    fontSize: 15,
+                  }}>
+                  Select a Prompt
+                </Text>
+                <Text
+                  style={{
+                    color: 'gray',
+                    fontWeight: '600',
+                    fontStyle: 'italic',
+                    fontSize: 15,
+                    marginTop: 3,
+                  }}>
+                  And Write your own answer
+                </Text>
+              </Pressable>
+            </View>
+          )}
+        </View>
       </View>
     </View>
   );
