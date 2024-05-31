@@ -18,7 +18,6 @@ import EmailScreen from '../screens/EmailScreen';
 import PasswordScreen from '../screens/PasswordScreen';
 import LocationScreen from '../screens/LocationScreen';
 import GenderScreen from '../screens/GenderScreen';
-import TypeScreen from '../screens/TypeScreen';
 import DatingType from '../screens/DatingType';
 import LookingFor from '../screens/LookingFor';
 import HomeTownScreen from '../screens/HomeTownScreen';
@@ -146,11 +145,7 @@ const StackNavigator = () => {
           component={GenderScreen}
           options={{headerShown: false}}
         />
-        <Stack.Screen
-          name="Type"
-          component={TypeScreen}
-          options={{headerShown: false}}
-        />
+
         <Stack.Screen
           name="Dating"
           component={DatingType}
