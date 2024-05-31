@@ -82,7 +82,7 @@ const LocationScreen = () => {
       .catch(error => console.log('Error fetching the location'));
   };
   const handleNext = () => {
-    navigation.navigate('Type');
+    navigation.navigate('Gender');
   };
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
