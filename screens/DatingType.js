@@ -28,7 +28,8 @@ const DatingType = () => {
   };
 
   const handleNext = () => {
-    navigation.navigate('LookingFor');
+    // Navigate to the next screen
+    navigation.navigate('Looking');
   };
 
   return (
