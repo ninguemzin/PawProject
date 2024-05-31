@@ -28,7 +28,7 @@ const DatingType = () => {
   };
 
   const handleNext = () => {
-    navigation.navigate('LookingFor');
+    navigation.navigate('Photos');
   };
 
   return (
