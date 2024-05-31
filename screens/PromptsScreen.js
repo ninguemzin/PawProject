@@ -1,11 +1,22 @@
-import {StyleSheet, Text, View, Image, Pressable} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useRoute, useNavigation} from '@react-navigation/native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const PromptsScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
+  const handleNext = () => {
+    navigation.navigate('PreFinal');
+  };
   return (
     <View>
       <View style={{marginTop: 90, marginHorizontal: 20}}>
@@ -171,6 +182,17 @@ const PromptsScreen = () => {
             </View>
           )}
         </View>
+        <TouchableOpacity
+          onPress={handleNext}
+          activeOpacity={0.8}
+          style={{marginTop: 30, marginLeft: 'auto'}}>
+          <MaterialCommunityIcons
+            name="arrow-right-circle"
+            size={45}
+            color="#581845"
+            style={{alignSelf: 'center', marginTop: 20}}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );
