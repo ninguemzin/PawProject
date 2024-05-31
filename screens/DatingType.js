@@ -7,11 +7,15 @@ import {
   Pressable,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
+import {
+  getRegistrationProgress,
+  saveRegistrationProgress,
+} from '../registrationUltils';
 
 const DatingType = () => {
   const navigation = useNavigation();
@@ -26,9 +30,18 @@ const DatingType = () => {
       setDatingPreferences([...datingPreferences, option]);
     }
   };
-
+  useEffect(() => {
+    getRegistrationProgress('Dating').then(progressData => {
+      if (progressData) {
+        setDatingPreferences(progressData.datingPreferences || []);
+      }
+    });
+  }, []);
   const handleNext = () => {
-    navigation.navigate('Photos');
+    if (datingPreferences.length > 0) {
+      saveRegistrationProgress('Dating', {datingPreferences});
+    }
+    navigation.navigate('Looking');
   };
 
   return (

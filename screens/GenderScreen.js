@@ -7,16 +7,30 @@ import {
   Pressable,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
+import {
+  getRegistrationProgress,
+  saveRegistrationProgress,
+} from '../registrationUltils';
 
 const GenderScreen = () => {
   const [gender, setGender] = useState('');
   const navigation = useNavigation();
+  useEffect(() => {
+    getRegistrationProgress('Gender').then(ProgressData => {
+      if (ProgressData) {
+        setGender(ProgressData.gender || '');
+      }
+    });
+  }, []);
   const handleNext = () => {
+    if (gender.trim() !== '') {
+      saveRegistrationProgress('Gender', {gender});
+    }
     navigation.navigate('Dating');
   };
 

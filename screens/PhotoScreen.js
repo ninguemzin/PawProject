@@ -1,19 +1,21 @@
 import {
   StyleSheet,
   Text,
-  TextInput,
   View,
   SafeAreaView,
   Image,
   Pressable,
-  Button,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import {
+  getRegistrationProgress,
+  saveRegistrationProgress,
+} from '../registrationUltils';
 
 const PhotoScreen = () => {
   const navigation = useNavigation();
@@ -21,7 +23,7 @@ const PhotoScreen = () => {
   const [imageUrl, setImageUrl] = useState('');
 
   const handleAddImage = () => {
-    const index = imageUrls.findIndex(url => url === '');
+    const index = imageUrls?.findIndex(url => url === '');
     if (index !== -1) {
       const updateUrls = [...imageUrls];
       updateUrls[index] = imageUrl;
@@ -29,8 +31,16 @@ const PhotoScreen = () => {
       setImageUrl('');
     }
   };
+  useEffect(() => {
+    getRegistrationProgress('Photos').then(progressData => {
+      if (progressData && progressData.imageUrls) {
+        setImageUrls(progressData.imageUrls);
+      }
+    });
+  }, []);
 
   const handleNext = () => {
+    saveRegistrationProgress('Photos', {imageUrls});
     navigation.navigate('Prompts');
   };
 
@@ -76,7 +86,6 @@ const PhotoScreen = () => {
             }}>
             {imageUrls?.slice(0, 3).map((url, index) => (
               <Pressable
-                key={index}
                 style={{
                   borderColor: '#581845',
                   borderWidth: url ? 0 : 2,
@@ -86,11 +95,17 @@ const PhotoScreen = () => {
                   borderStyle: 'dashed',
                   borderRadius: 10,
                   height: 100,
-                }}>
+                }}
+                key={index}>
                 {url ? (
                   <Image
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      borderRadius: 10,
+                      resizeMode: 'cover',
+                    }}
                     source={{uri: url}}
-                    style={{width: 100, height: 100}}
                   />
                 ) : (
                   <EvilIcons name="image" size={22} color="black" />
