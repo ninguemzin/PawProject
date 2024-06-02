@@ -160,11 +160,6 @@ const StackNavigator = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="HomeTownScreen"
-          component={HomeTownScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
           name="Birth"
           component={BirthScreen}
           options={{headerShown: false}}

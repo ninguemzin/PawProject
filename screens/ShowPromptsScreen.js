@@ -23,7 +23,7 @@ const ShowPromptsScreen = () => {
   const [answer, setAnswer] = useState('');
   const [question, setQuestion] = useState('');
   const [isModalVisible, setModalVisible] = useState(false);
-  const promptss = [
+  const questionPrompts = [
     {
       id: '0',
       name: 'Sobre mim',
@@ -135,7 +135,7 @@ const ShowPromptsScreen = () => {
             flexDirection: 'row',
             gap: 10,
           }}>
-          {promptss?.map((item, index) => (
+          {questionPrompts?.map((item, index) => (
             <>
               <View key={index}>
                 <Pressable
@@ -159,7 +159,7 @@ const ShowPromptsScreen = () => {
         </View>
 
         <View style={{marginTop: 20, marginHorizontal: 12}}>
-          {promptss?.map((item, index) => (
+          {questionPrompts?.map((item, index) => (
             <View key={index}>
               {option == item?.name && (
                 <View>
