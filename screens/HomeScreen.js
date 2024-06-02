@@ -12,7 +12,7 @@ const HomeScreen = () => {
   };
   return (
     <View>
-      <View></View>
+      <View>Batata</View>
     </View>
   );
 };
