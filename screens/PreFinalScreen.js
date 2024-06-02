@@ -1,15 +1,11 @@
 import {StyleSheet, Text, View, SafeAreaView, Pressable} from 'react-native';
 import React, {useContext, useEffect, useState} from 'react';
 import LottieView from 'lottie-react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 import {AuthContext} from '../AuthContext';
-import {
-  getRegistrationProgress,
-  saveRegistrationProgress,
-} from '../registrationUltils';
-import axios from 'axios';
+import {getRegistrationProgress} from '../registrationUltils';
 import {useRoute} from '@react-navigation/native';
+import axios, {Axios} from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const PreFinalScreen = () => {
@@ -53,6 +49,30 @@ const PreFinalScreen = () => {
       console.log('Error', error);
     }
   };
+  const clearAllScreenData = async () => {
+    try {
+      const screens = [
+        'Name',
+        'Email',
+        'Password',
+        'Birth',
+        'Location',
+        'Gender',
+        'Dating',
+        'LookingFor',
+        'Photos',
+        'Prompts',
+      ];
+      for (const screenName of screens) {
+        const key = `registration_progress_${screenName}`;
+        await AsyncStorage.removeItem(key);
+      }
+
+      console.log('All screen data cleared');
+    } catch (error) {
+      console.log('Error', error);
+    }
+  };
   const registerUser = async () => {
     try {
       const response = await axios
@@ -63,11 +83,14 @@ const PreFinalScreen = () => {
           AsyncStorage.setItem('token', token);
           setToken(token);
         });
+
+      clearAllScreenData();
     } catch (error) {
       console.log('Register Error', error);
     }
   };
 
+  console.log(userData);
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
       <View style={{marginTop: 80}}>
