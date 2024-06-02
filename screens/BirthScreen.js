@@ -51,7 +51,7 @@ const BirthScreen = () => {
         setYear(yearValue);
       }
     });
-  });
+    }, []);
 
   const handleNext = () => {
     if (day.trim() !== '' && month.trim() !== '' && year.trim() !== '') {

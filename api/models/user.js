@@ -31,10 +31,12 @@ const userSchema = new Schema({
     type: String,
     
   },
-  datingPreferences: {
-    type: String,
-    required: true,
-  },
+  datingPreferences: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
   lookingFor: {
     type: String,
     required: true,
@@ -44,7 +46,7 @@ const userSchema = new Schema({
       type: String,
     },
   ],
-  prompts: [
+  prompt: [
     {
       question: {
         type: String,
