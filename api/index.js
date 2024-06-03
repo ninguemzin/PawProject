@@ -125,7 +125,7 @@ app.get('/matches', async (req, res) => {
 
     const matches = await User.find(filter)
       .where('_id')
-      .nin([userId, ...friendIds, ...crushIds]);
+      .nin([userId, ...friendsIds, ...crushIds]);
 
     return res.status(200).json({matches});
   } catch (error) {
