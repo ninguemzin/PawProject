@@ -188,11 +188,96 @@ const LikesScreen = () => {
             Nearby
           </Text>
         </Pressable>
-
-        <View>
-          {likes?.length > 0 && (
-            <Pressable>
+      </View>
+      <View>
+        {likes.length > 0 && (
+          <Pressable
+            onPress={() =>
+              navigation.navigate('HandleLike', {
+                name: likes[0].userId?.firstName,
+                image: likes[0].image,
+                imageUrls: likes[0].userId?.imageUrls,
+                prompts: likes[0].userId?.prompts,
+                userId: userId,
+                selectedUserId: likes[0].userId?._id,
+                likes: likes?.length,
+              })
+            }
+            style={{
+              padding: 20,
+              borderColor: '#E0E0E0',
+              borderWidth: 1,
+              borderRadius: 7,
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'flex-start',
+                paddingHorizontal: 16,
+                paddingVertical: 12,
+                backgroundColor: '#f0f0f0',
+                borderRadius: 5,
+                marginBottom: 8,
+                width: 145,
+              }}>
+              <View />
               <View>
+                <Text>Liked your photo</Text>
+              </View>
+            </View>
+            <Text style={{fontSize: 22, fontWeight: 'bold'}}>
+              {likes[0].userId?.firstName}
+            </Text>
+            <Image
+              source={{uri: likes[0].userId?.imageUrls[0]}}
+              style={{
+                width: '100%',
+                height: 350,
+                resizeMode: 'cover',
+                borderRadius: 10,
+                marginTop: 20,
+              }}
+            />
+          </Pressable>
+        )}
+      </View>
+      <Text
+        style={{
+          fontSize: 20,
+          fontWeight: 'bold',
+          fontFamily: 'GeezaPro-Bold',
+          marginTop: 20,
+        }}>
+        Up Next
+      </Text>
+      <View
+        style={{
+          width: '100%',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          gap: 20,
+        }}>
+        {likes.slice(1).map((like, index) => (
+          <View style={{marginVertical: 10, backgroundColor: 'white'}}>
+            <View style={{padding: 12}}>
+              {like.comment ? (
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'flex-start',
+                    paddingHorizontal: 16,
+                    paddingVertical: 12,
+                    backgroundColor: '#F5F3C6',
+                    borderRadius: 5,
+                    marginBottom: 8,
+                    width: 145,
+                  }}>
+                  <View />
+                  <View>
+                    <Text>{like?.comment}</Text>
+                  </View>
+                </View>
+              ) : (
                 <View
                   style={{
                     flexDirection: 'row',
@@ -204,18 +289,31 @@ const LikesScreen = () => {
                     marginBottom: 8,
                     width: 145,
                   }}>
-                  <Text></Text>
+                  <View />
+                  <View>
+                    <Text>Liked your photo</Text>
+                  </View>
                 </View>
-                <Text></Text>
-              </View>
-            </Pressable>
-          )}
-        </View>
+              )}
+
+              <Text style={{fontSize: 17, fontWeight: '500'}}>
+                {like?.userId?.firstName}
+              </Text>
+            </View>
+
+            <View style={{width: '100%'}}>
+              <Image
+                key={index}
+                source={{uri: like.userId?.imageUrls[0]}}
+                style={{height: 220, width: 180, borderRadius: 4}}
+              />
+            </View>
+          </View>
+        ))}
       </View>
     </ScrollView>
   );
 };
-
 export default LikesScreen;
 
 const styles = StyleSheet.create({});
