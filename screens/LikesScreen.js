@@ -34,7 +34,7 @@ const LikesScreen = () => {
   const fetchReceivedLikes = async () => {
     try {
       const response = await axios.get(
-        `http://http://10.0.2.2:4000/received-likes/${userId}`,
+        `http://10.0.2.2:4000/received-likes/${userId}`,
       );
       const receivedLikes = response.data.receivedLikes;
       console.log(receivedLikes); // Handle received likes in your frontend
