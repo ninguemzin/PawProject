@@ -168,7 +168,7 @@ import {
               </View>
   
               <View style={{marginVertical: 15}}>
-                {route?.params?.prompt.slice(0, 1).map(prompt => (
+              {route?.params?.prompt && route.params.prompt.slice(0, 1).map(prompt =>(
                   <>
                     <View
                       key={prompt.id}
@@ -251,7 +251,7 @@ import {
               </View>
   
               <View style={{marginVertical: 15}}>
-                {route?.params?.prompt.slice(1, 2).map(prompt => (
+              {route?.params?.prompt && route.params.prompt.slice(1, 2).map(prompt =>(
                   <>
                     <View
                       key={prompt.id}
@@ -330,7 +330,7 @@ import {
                 ))}
               </View>
               <View style={{marginVertical: 15}}>
-                {route?.params?.prompt.slice(2, 3).map(prompt => (
+              {route?.params?.prompt && route.params.prompt.slice(2, 3).map(prompt =>(
                   <>
                     <View
                       key={prompt.id}
