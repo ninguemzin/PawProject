@@ -324,7 +324,7 @@ const HomeScreen = () => {
   };
   console.log('USERID', userId);
   const [currentProfileIndex, setCurrentProfileIndex] = useState(0);
-  const [currentProfile, setCurrentProfile] = useState();
+  const [currentProfile, setCurrentProfile] = useState(profilesData[0]);
   const fetchMatches = async () => {
     try {
       const response = await axios.get(
