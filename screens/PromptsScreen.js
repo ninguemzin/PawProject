@@ -16,7 +16,7 @@ const PromptsScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const handleNext = () => {
-    saveRegistrationProgress('Prompts', {prompt: route?.params?.prompts});
+    saveRegistrationProgress('Prompts', {prompts: route?.params?.prompts});
     navigation.navigate('PreFinal');
   };
   return (

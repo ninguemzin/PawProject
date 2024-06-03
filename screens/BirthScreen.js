@@ -44,19 +44,19 @@ const BirthScreen = () => {
   useEffect(() => {
     getRegistrationProgress('Birth').then(progressData => {
       if (progressData) {
-        const {dateOFBirth} = progressData;
-        const [dayValue, monthValue, yearValue] = dateOFBirth.split('/');
+        const {dateOfBirth} = progressData;
+        const [dayValue, monthValue, yearValue] = dateOfBirth.split('/');
         setDay(dayValue);
         setMonth(monthValue);
         setYear(yearValue);
       }
     });
-  });
+    }, []);
 
   const handleNext = () => {
     if (day.trim() !== '' && month.trim() !== '' && year.trim() !== '') {
-      const dateOFBirth = `${day}/${month}/${year}`;
-      saveRegistrationProgress('Birth', {dateOFBirth});
+      const dateOfBirth = `${day}/${month}/${year}`;
+      saveRegistrationProgress('Birth', {dateOfBirth});
     }
     navigation.navigate('Location');
   };

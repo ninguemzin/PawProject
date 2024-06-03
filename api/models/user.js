@@ -3,12 +3,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  FirstName: {
+  firstName: {
     type: String,
     required: true,
   },
   lastName: {
     type: String,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: false,
   },
   password: {
     type: String,
@@ -24,12 +29,13 @@ const userSchema = new Schema({
   },
   location: {
     type: String,
-    required: true,
   },
-  datingPrefences: {
-    type: String,
-    required: true,
-  },
+  datingPreferences: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
   lookingFor: {
     type: String,
     required: true,
@@ -39,7 +45,7 @@ const userSchema = new Schema({
       type: String,
     },
   ],
-  prompts: [
+  prompt: [
     {
       question: {
         type: String,
