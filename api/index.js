@@ -120,7 +120,7 @@ app.get('/matches', async (req, res) => {
 
     const currentUser = await User.findById(userId)
       .populate('matches', '_id')
-      .populate('likedProfiles', '_id');
+      .populate('like-Profiles', '_id');
 
     const friendsIds = currentUser.matches.map(friend => friend._id);
 
@@ -174,7 +174,7 @@ app.get('/received-likes/:userId', async (req, res) => {
     const {userId} = req.params;
 
     const likes = await User.findById(userId)
-      .populate('receivedLikes.userId', 'firstName imageUrls prompts')
+      .populate('receivedLikes.userId', 'firstName imageUrls prompt')
       .select('receivedLikes');
 
     res.status(200).json({receivedLikes: likes.receivedLikes});
