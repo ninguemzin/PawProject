@@ -20,7 +20,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {useNavigation} from '@react-navigation/native';
 
 const HomeScreen = () => {
-  const navigation = useNavigation;
+  const navigation = useNavigation();
   const [option, setOption] = useState('Compatible');
   const [userId, setUserId] = useState('');
   const [profilesData, setProfilesData] = useState([]);
@@ -250,7 +250,7 @@ const HomeScreen = () => {
                 </View>
 
                 <View style={{marginVertical: 15}}>
-                  {currentProfile?.prompts.slice(0, 1).map(prompt => (
+                  {currentProfile?.prompt.slice(0, 1).map(prompt => (
                     <>
                       <View
                         key={prompt.id}
@@ -493,7 +493,7 @@ const HomeScreen = () => {
                 </View>
 
                 <View style={{marginVertical: 15}}>
-                  {currentProfile?.prompts.slice(1, 2).map(prompt => (
+                  {currentProfile?.prompt.slice(1, 2).map(prompt => (
                     <>
                       <View
                         key={prompt.id}
@@ -580,7 +580,7 @@ const HomeScreen = () => {
                   ))}
                 </View>
                 <View style={{marginVertical: 15}}>
-                  {currentProfile?.prompts.slice(2, 3).map(prompt => (
+                  {currentProfile?.prompt.slice(2, 3).map(prompt => (
                     <>
                       <View
                         key={prompt.id}
