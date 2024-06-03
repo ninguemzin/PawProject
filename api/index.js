@@ -133,3 +133,46 @@ app.get('/matches', async (req, res) => {
     res.status(500).json({message: 'Internal server error'});
   }
 });
+
+app.post('/like-profile', async (req, res) => {
+  try {
+    const {userId, likedUserId, image, comment} = req.body;
+
+    // Update the liked user's receivedLikes array
+    await User.findByIdAndUpdate(likedUserId, {
+      $push: {
+        receivedLikes: {
+          userId: userId,
+          image: image,
+          comment: comment,
+        },
+      },
+    });
+    // Update the user's likedProfiles array
+    await User.findByIdAndUpdate(userId, {
+      $push: {
+        likedProfiles: likedUserId,
+      },
+    });
+
+    res.status(200).json({message: 'Profile liked successfully'});
+  } catch (error) {
+    console.error('Error liking profile:', error);
+    res.status(500).json({message: 'Internal server error'});
+  }
+});
+
+app.get('/received-likes/:userId', async (req, res) => {
+  try {
+    const {userId} = req.params;
+
+    const likes = await User.findById(userId)
+      .populate('receivedLikes.userId', 'firstName imageUrls prompts')
+      .select('receivedLikes');
+
+    res.status(200).json({receivedLikes: likes.receivedLikes});
+  } catch (error) {
+    console.error('Error fetching received likes:', error);
+    res.status(500).json({message: 'Internal server error'});
+  }
+});
