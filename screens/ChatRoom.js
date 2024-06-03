@@ -3,7 +3,6 @@ import {
     Text,
     View,
     KeyboardAvoidingView,
-    ScrollView,
     TextInput,
     Pressable,
     Image,
@@ -13,7 +12,7 @@ import {
   import Feather from 'react-native-vector-icons/Feather';
   import Ionicons from 'react-native-vector-icons/Ionicons';
   import {useNavigation, useRoute} from '@react-navigation/native';
-  import {io} from 'socket.io';
+  // import {io} from 'socket.io';
   import axios from 'axios';
   
   const ChatRoom = () => {

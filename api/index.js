@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const crypto = require('crypto');
+const nodemailer = require('nodemailer');
 
 const app = express();
 const port = 4000;
@@ -32,6 +33,25 @@ app.listen(port, () => {
 });
 
 const User = require('./models/user');
+// const Chat = require('./models/message');
+
+// const generateToken = user => {
+//   // Define your secret key used to sign the token
+//   const secretKey = crypto.randomBytes(32).toString('hex');
+
+//   // Define the token payload (you can include any user data you want)
+//   const payload = {
+//     userId: user._id,
+//     email: user.email,
+//     // Add any other user data you want to include
+//   };
+
+//   // Generate the token with the payload and secret key
+//   const token = jwt.sign(payload, secretKey, {expiresIn: '1d'}); // Token expires in 1 hour
+
+//   return token;
+// };
+
 
 app.post('/register', async (req, res) => {
   try {
