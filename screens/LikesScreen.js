@@ -188,8 +188,10 @@ const LikesScreen = () => {
             Nearby
           </Text>
         </Pressable>
+
       </View>
       <View>
+
         {likes.length > 0 && (
           <Pressable
             onPress={() =>
@@ -200,7 +202,9 @@ const LikesScreen = () => {
                 prompts: likes[0].userId?.prompts,
                 userId: userId,
                 selectedUserId: likes[0].userId?._id,
+
                 likes: likes?.length,
+
               })
             }
             style={{
