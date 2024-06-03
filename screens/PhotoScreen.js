@@ -165,7 +165,7 @@ const PhotoScreen = () => {
         </View>
 
         <View style={{marginTop: 25}}>
-          <Text>Add a picture of yourself</Text>
+          <Text>Adicione foto de seu bichinho</Text>
           <View
             style={{
               flexDirection: 'row',

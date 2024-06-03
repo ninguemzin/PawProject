@@ -106,17 +106,7 @@ const LoginScreen = () => {
       </View>
 
       <KeyboardAvoidingView>
-        <View style={{alignItems: 'center'}}>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-              marginTop: 25,
-              color: '#581845',
-            }}>
-            Desgined to be deleted
-          </Text>
-        </View>
+        
 
         <View
           style={{
@@ -198,10 +188,10 @@ const LoginScreen = () => {
                   alignItems: 'center',
                   justifyContent: 'space-between',
                 }}>
-                <Text>Keep me logged in</Text>
+                <Text>Me mantenha logado</Text>
 
                 <Text style={{color: '#007FFF', fontWeight: '500'}}>
-                  Forgot Password
+                  Esqueci a senha
                 </Text>
               </View>
             </>
@@ -242,7 +232,7 @@ const LoginScreen = () => {
                 fontSize: 16,
                 fontWeight: 'bold',
               }}>
-              Create account
+              Criar conta
             </Text>
           </Pressable>
           <Pressable
@@ -264,7 +254,7 @@ const LoginScreen = () => {
                 fontSize: 16,
                 fontWeight: 'bold',
               }}>
-              Sign In
+              Login
             </Text>
           </Pressable>
         </View>

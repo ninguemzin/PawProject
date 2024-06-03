@@ -28,6 +28,7 @@ import PreFinalScreen from '../screens/PreFinalScreen';
 import PhotoScreen from '../screens/PhotoScreen';
 import {AuthContext} from '../AuthContext';
 import LoginScreen from '../screens/LoginScreen';
+import ChatRoom from '../screens/ChatRoom';
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -210,6 +211,11 @@ const StackNavigator = () => {
         <Stack.Screen
           name="HandleLike"
           component={HandleLikeScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ChatRoom"
+          component={ChatRoom}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
