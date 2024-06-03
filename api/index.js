@@ -139,15 +139,19 @@ app.post('/like-profile', async (req, res) => {
     const {userId, likedUserId, image, comment} = req.body;
 
     // Update the liked user's receivedLikes array
-    await User.findByIdAndUpdate(likedUserId, {
-      $push: {
-        receivedLikes: {
-          userId: userId,
-          image: image,
-          comment: comment,
+    await User.findByIdAndUpdate(
+      likedUserId,
+      {
+        $push: {
+          receivedLikes: {
+            userId: userId, // Corrigindo a chave userId aqui
+            image: image,
+            comment: comment,
+          },
         },
       },
-    });
+      {new: true},
+    );
     // Update the user's likedProfiles array
     await User.findByIdAndUpdate(userId, {
       $push: {
