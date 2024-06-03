@@ -20,15 +20,12 @@ const SendLikeScreen = () => {
   const likeProfile = async () => {
     try {
       console.log('Route Params:', route.params);
-      const response = await axios.post(
-        'http://192.168.0.102:4000/like-profile',
-        {
-          userId: route.params.userId,
-          likedUserId: route.params.likedUserId,
-          image: route?.params?.image,
-          comment: comment,
-        },
-      );
+      const response = await axios.post('http://10.0.2.2:4000/like-profile', {
+        userId: route.params.userId,
+        likedUserId: route.params.likedUserId,
+        image: route?.params?.image,
+        comment: comment,
+      });
       console.log(response.data.message); // Log success message
       if (response.status == 200) {
         navigation.goBack();
