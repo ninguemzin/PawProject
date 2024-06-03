@@ -20,7 +20,7 @@ import LocationScreen from '../screens/LocationScreen';
 import GenderScreen from '../screens/GenderScreen';
 import DatingType from '../screens/DatingType';
 import LookingFor from '../screens/LookingFor';
-import HomeTownScreen from '../screens/HomeTownScreen';
+import HandleLikeScreen from '../screens/HandleLikeScreen';
 import SendLikeScreen from '../screens/SendLikeScreen';
 import PromptsScreen from '../screens/PromptsScreen';
 import ShowPromptsScreen from '../screens/ShowPromptsScreen';
@@ -205,6 +205,11 @@ const StackNavigator = () => {
         <Stack.Screen
           name="SendLike"
           component={SendLikeScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="HandleLike"
+          component={HandleLikeScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

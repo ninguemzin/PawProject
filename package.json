@@ -16,15 +16,9 @@
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
-<<<<<<< HEAD
     "axios": "^1.7.2",
     "gradle": "^1.2.4",
-=======
-    "axios": "^1.6.7",
-    "core-js": "^3.37.1",
-    "cors": "^2.8.5",
     "jwt-decode": "^4.0.0",
->>>>>>> 9d1d3409cba7b91afabb6a9c059521e64d771e87
     "lottie-react-native": "^6.7.2",
     "mongodb": "^6.7.0",
     "react": "18.2.0",

@@ -124,12 +124,7 @@ const LoginScreen = () => {
             alignItems: 'center',
             marginTop: 20,
           }}>
-          <Image
-            style={{width: 100, height: 80, resizeMode: 'cover'}}
-            source={{
-              uri: 'https://branditechture.agency/brand-logos/wp-content/uploads/wpdm-cache/Hinge-App-900x0.png',
-            }}
-          />
+          
         </View>
 
         <View style={{marginTop: 20}}>

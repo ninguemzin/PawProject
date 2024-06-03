@@ -120,7 +120,7 @@ app.get('/matches', async (req, res) => {
 
     const currentUser = await User.findById(userId)
       .populate('matches', '_id')
-      .populate('like-Profiles', '_id');
+      .populate('likedProfiles', '_id');
 
     const friendsIds = currentUser.matches.map(friend => friend._id);
 
@@ -180,6 +180,67 @@ app.get('/received-likes/:userId', async (req, res) => {
     res.status(200).json({receivedLikes: likes.receivedLikes});
   } catch (error) {
     console.error('Error fetching received likes:', error);
+    res.status(500).json({message: 'Internal server error'});
+  }
+});
+
+app.post('/create-match', async (req, res) => {
+  try {
+    const {currentUserId, selectedUserId} = req.body;
+
+    //update the selected user's crushes array and the matches array
+    await User.findByIdAndUpdate(selectedUserId, {
+      $push: {matches: currentUserId},
+      $pull: {likedProfiles: currentUserId},
+    });
+
+    //update the current user's matches array recievedlikes array
+    await User.findByIdAndUpdate(currentUserId, {
+      $push: {matches: selectedUserId},
+    });
+
+    // Find the user document by ID and update the receivedLikes array
+    const updatedUser = await User.findByIdAndUpdate(
+      currentUserId,
+      {
+        $pull: {receivedLikes: {userId: selectedUserId}},
+      },
+      {new: true},
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: 'User not found' });
+  }
+
+
+    // If the user document was successfully updated
+    res.status(200).json({message: 'ReceivedLikes updated successfully'});
+
+  } catch (error) {
+    res.status(500).json({message: 'Error creating a match', error});
+  }
+});
+
+app.get('/get-matches/:userId', async (req, res) => {
+  try {
+    const {userId} = req.params;
+
+    // Find the user by ID and populate the matches field
+    const user = await User.findById(userId).populate(
+      'matches',
+      'firstName imageUrls',
+    );
+
+    if (!user) {
+      return res.status(404).json({message: 'User not found'});
+    }
+
+    // Extract matches from the user object
+    const matches = user.matches;
+
+    res.status(200).json({matches});
+  } catch (error) {
+    console.error('Error getting matches:', error);
     res.status(500).json({message: 'Internal server error'});
   }
 });

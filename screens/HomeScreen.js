@@ -355,65 +355,8 @@ const HomeScreen = () => {
                     </View>
                   </View>
 
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: 12,
-                      marginTop: 15,
-                      borderBottomWidth: 0.8,
-                      borderBottomColor: '#E0E0E0',
-                      paddingBottom: 10,
-                    }}>
-                    <IonIcons name="bag-add-outline" size={20} color="black" />
-                    <Text>Research Assistant at Medical College</Text>
-                  </View>
-
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: 12,
-                      marginTop: 15,
-                      borderBottomWidth: 0.8,
-                      borderBottomColor: '#E0E0E0',
-                      paddingBottom: 10,
-                    }}>
-                    <SimpleLineIcons
-                      name="graduation"
-                      size={22}
-                      color="black"
-                    />
-                    <Text>University of Bangalore</Text>
-                  </View>
-
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: 12,
-                      marginTop: 15,
-                      borderBottomWidth: 0.8,
-                      borderBottomColor: '#E0E0E0',
-                      paddingBottom: 10,
-                    }}>
-                    <IonIcons name="book-outline" size={20} color="black" />
-                    <Text>Hindu</Text>
-                  </View>
-
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: 12,
-                      marginTop: 15,
-                      borderBottomWidth: 0.8,
-                      borderBottomColor: '#E0E0E0',
-                      paddingBottom: 10,
-                    }}>
-                    <IonIcons name="home-outline" size={20} color="black" />
-                    <Text>Mathura</Text>
-                  </View>
+                 
+                 
                   <View
                     style={{
                       flexDirection: 'row',
@@ -428,19 +371,7 @@ const HomeScreen = () => {
                     <Text>{currentProfile?.lookingFor}</Text>
                   </View>
 
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: 12,
-                      marginTop: 15,
-                      borderBottomWidth: 0.7,
-                      borderBottomColor: '#E0E0E0',
-                      paddingBottom: 10,
-                    }}>
-                    <IonIcons name="heart-outline" size={20} color="black" />
-                    <Text>Monogamy</Text>
-                  </View>
+                  
                 </View>
 
                 <View>

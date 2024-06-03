@@ -12,7 +12,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {jwtDecode} from 'jwt-decode';
-import 'core-js/stable/atob';
+
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
 
 const LikesScreen = () => {
@@ -188,10 +188,8 @@ const LikesScreen = () => {
             Nearby
           </Text>
         </Pressable>
-
       </View>
       <View>
-
         {likes.length > 0 && (
           <Pressable
             onPress={() =>
@@ -202,9 +200,7 @@ const LikesScreen = () => {
                 prompts: likes[0].userId?.prompts,
                 userId: userId,
                 selectedUserId: likes[0].userId?._id,
-
-                likes: likes?.length,
-
+                likes:likes?.length
               })
             }
             style={{
@@ -245,6 +241,7 @@ const LikesScreen = () => {
           </Pressable>
         )}
       </View>
+
       <Text
         style={{
           fontSize: 20,
@@ -318,6 +315,7 @@ const LikesScreen = () => {
     </ScrollView>
   );
 };
+
 export default LikesScreen;
 
 const styles = StyleSheet.create({});
