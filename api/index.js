@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const crypto = require('crypto');
+const nodemailer = require('nodemailer');
 
 const app = express();
 const port = 4000;
@@ -32,6 +33,25 @@ app.listen(port, () => {
 });
 
 const User = require('./models/user');
+// const Chat = require('./models/message');
+
+// const generateToken = user => {
+//   // Define your secret key used to sign the token
+//   const secretKey = crypto.randomBytes(32).toString('hex');
+
+//   // Define the token payload (you can include any user data you want)
+//   const payload = {
+//     userId: user._id,
+//     email: user.email,
+//     // Add any other user data you want to include
+//   };
+
+//   // Generate the token with the payload and secret key
+//   const token = jwt.sign(payload, secretKey, {expiresIn: '1d'}); // Token expires in 1 hour
+
+//   return token;
+// };
+
 
 app.post('/register', async (req, res) => {
   try {
@@ -76,7 +96,7 @@ app.post('/login', async (req, res) => {
   try {
     const {email, password} = req.body;
 
-    const user = await User.findOne9({email});
+    const user = await User.findOne({email});
     if (!user) {
       return res.status(401).json({message: 'Invalid email or password'});
     }
@@ -242,5 +262,52 @@ app.get('/get-matches/:userId', async (req, res) => {
   } catch (error) {
     console.error('Error getting matches:', error);
     res.status(500).json({message: 'Internal server error'});
+  }
+});
+
+io.on('connection', socket => {
+  console.log('a user is connected');
+
+  socket.on('sendMessage', async data => {
+    try {
+      const {senderId, receiverId, message} = data;
+
+      console.log('data', data);
+
+      const newMessage = new Chat({senderId, receiverId, message});
+      await newMessage.save();
+
+      //emit the message to the receiver
+      io.to(receiverId).emit('receiveMessage', newMessage);
+    } catch (error) {
+      console.log('Error handling the messages');
+    }
+    socket.on('disconnet', () => {
+      console.log('user disconnected');
+    });
+  });
+});
+
+http.listen(8000, () => {
+  console.log('Socket.IO server running on port 8000');
+});
+
+app.get('/messages', async (req, res) => {
+  try {
+    const {senderId, receiverId} = req.query;
+
+    console.log(senderId);
+    console.log(receiverId);
+
+    const messages = await Chat.find({
+      $or: [
+        {senderId: senderId, receiverId: receiverId},
+        {senderId: receiverId, receiverId: senderId},
+      ],
+    }).populate('senderId', '_id name');
+
+    res.status(200).json(messages);
+  } catch (error) {
+    res.status(500).json({message: 'Error in getting messages', error});
   }
 });

@@ -97,7 +97,7 @@ const SendLikeScreen = () => {
               flex: 1,
             }}>
             <Text style={{fontWeight: 'bold', textAlign: 'center'}}>
-              Send Like
+              Enviar Like
             </Text>
           </Pressable>
         </View>

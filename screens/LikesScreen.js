@@ -127,7 +127,7 @@ const LikesScreen = () => {
               fontWeight: '400',
               color: option == 'Recent' ? 'white' : '#808080',
             }}>
-            Recent
+            Recente
           </Text>
         </Pressable>
         <Pressable
@@ -146,7 +146,7 @@ const LikesScreen = () => {
               fontWeight: '400',
               color: option == 'your type' ? 'white' : '#808080',
             }}>
-            your type
+            Seu tipo
           </Text>
         </Pressable>
         <Pressable
@@ -166,7 +166,7 @@ const LikesScreen = () => {
               fontWeight: '400',
               color: option == 'Last Active' ? 'white' : '#808080',
             }}>
-            Last Active
+            Ultimo
           </Text>
         </Pressable>
         <Pressable
@@ -185,7 +185,7 @@ const LikesScreen = () => {
               fontWeight: '400',
               color: option == 'Nearby' ? 'white' : '#808080',
             }}>
-            Nearby
+            Proximo
           </Text>
         </Pressable>
       </View>
@@ -249,7 +249,7 @@ const LikesScreen = () => {
           fontFamily: 'GeezaPro-Bold',
           marginTop: 20,
         }}>
-        Up Next
+        Proximo
       </Text>
       <View
         style={{

@@ -135,7 +135,7 @@ const PreFinalScreen = () => {
             fontFamily: 'GeezaPro-Bold',
             marginLeft: 20,
           }}>
-          All set to register
+          Tudo pronto para se registrar
         </Text>
         <Text
           style={{
@@ -146,7 +146,7 @@ const PreFinalScreen = () => {
             marginRight: 10,
             marginTop: 10,
           }}>
-          Setting up your profile for you
+          Configurando seu perfil para você
         </Text>
       </View>
 
@@ -176,7 +176,7 @@ const PreFinalScreen = () => {
             fontWeight: '600',
             fontSize: 15,
           }}>
-          Finish registering
+          Finalizar registro
         </Text>
       </Pressable>
     </SafeAreaView>

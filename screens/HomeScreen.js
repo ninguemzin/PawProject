@@ -112,7 +112,7 @@ const HomeScreen = () => {
                 fontWeight: '400',
                 color: option == 'Compatible' ? 'white' : '#808080',
               }}>
-              Compatible
+              Compativel
             </Text>
           </Pressable>
           <Pressable
@@ -132,7 +132,7 @@ const HomeScreen = () => {
                 fontWeight: '400',
                 color: option == 'Active Today' ? 'white' : '#808080',
               }}>
-              Active Today
+              Ativo hoje
             </Text>
           </Pressable>
           <Pressable
@@ -151,7 +151,7 @@ const HomeScreen = () => {
                 fontWeight: '400',
                 color: option == 'New here' ? 'white' : '#808080',
               }}>
-              New here
+              Novo aqui
             </Text>
           </Pressable>
         </View>
@@ -182,7 +182,7 @@ const HomeScreen = () => {
                       borderRadius: 20,
                     }}>
                     <Text style={{textAlign: 'center', color: 'white'}}>
-                      new here
+                      Novo aqui
                     </Text>
                   </View>
                 </View>

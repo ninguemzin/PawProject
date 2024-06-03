@@ -30,31 +30,31 @@ const ShowPromptsScreen = () => {
       questions: [
         {
           id: '10',
-          question: 'A random fact I love is',
+          question: 'Um fato aleatório que adoro é',
         },
         {
           id: '11',
-          question: 'Typical Sunday',
+          question: 'Domingo típico',
         },
         {
           id: '12',
-          question: 'I go crazy for',
+          question: 'Eu enlouqueço por',
         },
         {
           id: '13',
-          question: 'Unusual Skills',
+          question: 'Habilidades incomuns',
         },
         {
           id: '14',
-          question: 'My greatest strenght',
+          question: 'Minha maior força',
         },
         {
           id: '15',
-          question: 'My simple pleasures',
+          question: 'Meus prazeres simples',
         },
         {
           id: '16',
-          question: 'A life goal of mine',
+          question: 'Um objetivo de vida meu',
         },
       ],
     },
@@ -64,31 +64,31 @@ const ShowPromptsScreen = () => {
       questions: [
         {
           id: '10',
-          question: 'I unwind by',
+          question: 'Eu relaxo através de',
         },
         {
           id: '11',
-          question: 'A boundary of mine is',
+          question: 'Um limite meu é',
         },
         {
           id: '12',
-          question: 'I feel most supported when',
+          question: 'Eu me sinto mais apoiado quando',
         },
         {
           id: '13',
-          question: 'I hype myself up by',
+          question: 'Eu me animo fazendo',
         },
         {
           id: '14',
-          question: 'To me, relaxation is',
+          question: 'Para mim, relaxamento é',
         },
         {
           id: '15',
-          question: 'I beat my blues by',
+          question: 'Eu combato minha tristeza fazendo',
         },
         {
           id: '16',
-          question: 'My skin care routine',
+          question: 'Minha rotina de cuidados com a pele',
         },
       ],
     },
@@ -214,7 +214,7 @@ const ShowPromptsScreen = () => {
                 value={answer}
                 style={{color: 'gray', width: 300, fontSize: answer ? 18 : 18}}
                 onChangeText={text => setAnswer(text)}
-                placeholder="Enter Your Answer"></TextInput>
+                placeholder="Enviar sua resposta"></TextInput>
             </View>
             <Button onPress={addPrompt} title="Add" />
           </View>
