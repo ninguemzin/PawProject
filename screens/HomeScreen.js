@@ -75,14 +75,6 @@ const HomeScreen = () => {
     }
   }, [profilesData]);
   console.log('profiles', currentProfile);
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     console.log('i call');
-  //     if (userId) {
-  //       fetchMatches();
-  //     }
-  //   }, [userId]),
-  // );
   return (
     <>
       <ScrollView style={{marginTop: 55}}>
