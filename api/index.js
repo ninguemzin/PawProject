@@ -84,8 +84,11 @@ app.post('/login', async (req, res) => {
     if (user.password !== password) {
       return res.status(401).json({message: 'Invalide password'});
     }
+
     const secretKey = crypto.randomBytes(32).toString('hex');
-    const token = jwt.sign({userId: user._id}, secretKey, {expiresIn: '1d'});
+
+    const token = jwt.sign({userId: user._id}, secretKey);
+
     return res.status(200).json({token});
   } catch (error) {
     res.status(500).json({message: 'login failed'});

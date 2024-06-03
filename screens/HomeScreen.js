@@ -39,7 +39,7 @@ const HomeScreen = () => {
     showToken();
   }, []);
   const showToken = async () => {
-    const token = await AsyncStorage.removeItem('token');
+    const token = await AsyncStorage.getItem('token');
     console.log('token', token);
   };
   console.log('USERID', userId);

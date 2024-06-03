@@ -21,6 +21,57 @@ import axios from 'axios';
 import {AuthContext} from '../AuthContext';
 
 const LoginScreen = () => {
+  const [email, setEmail] = useState('');
+  //   const route = useRoute();
+  //   console.log(route);
+  const [password, setPassword] = useState('');
+  const navigation = useNavigation();
+  const [option, setOption] = useState('Create account');
+  const {token, isLoading, setToken} = useContext(AuthContext);
+
+  console.log(token);
+
+  useEffect(() => {
+    // Check if the token is set and not in loading state
+    if (token) {
+      // Navigate to the main screen
+      navigation.navigate('MainStack', {screen: 'Main'});
+    }
+  }, [token, navigation]);
+
+  const signInUser = async () => {
+    setOption('Sign In');
+
+    try {
+      console.log(email);
+      console.log(password);
+      const user = {
+        email: email,
+        password: password,
+      };
+      const response = await axios.post(
+        'http://192.168.0.102:4000/login',
+        user,
+      );
+      console.log(response);
+      const token = response.data.token;
+
+      // Store the token in AsyncStorage
+      await AsyncStorage.setItem('token', token);
+
+      setToken(token);
+      // navigation.replace('Main');
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+
+  const createAccount = () => {
+    setOption('Create account');
+
+    navigation.navigate('Basic');
+  };
+
   return (
     <SafeAreaView
       style={{flex: 1, backgroundColor: 'white', alignItems: 'center'}}>
@@ -53,7 +104,7 @@ const LoginScreen = () => {
             fontFamily: 'GeezaPro-Bold',
             color: 'white',
           }}>
-          Hinge
+          PAWMATE
         </Text>
       </View>
 
@@ -85,146 +136,142 @@ const LoginScreen = () => {
         </View>
 
         <View style={{marginTop: 20}}>
-          {/* {option == 'Sign In' ? (
-            <> */}
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: 5,
-              backgroundColor: '#581845',
-              paddingVertical: 5,
-              borderRadius: 5,
-              marginTop: 30,
-            }}>
-            <MaterialIcons
-              style={{marginLeft: 8}}
-              name="email"
-              size={24}
-              color="white"
-            />
-            <TextInput
-              // value={email}
-              // onChangeText={text => setEmail(text)}
-              placeholder="Enter your email"
-              placeholderTextColor={'white'}
-              style={{
-                color: 'white',
-                marginVertical: 10,
-                width: 300,
-                // fontSize: password ? 17 : 17,
-              }}
-            />
-          </View>
-          <View style={{}}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: 5,
-                backgroundColor: '#581845',
-                paddingVertical: 5,
-                borderRadius: 5,
-                marginTop: 30,
-              }}>
-              <AntDesign
-                style={{marginLeft: 8}}
-                name="lock1"
-                size={24}
-                color="white"
-              />
-              <TextInput
-                // value={password}
-                // onChangeText={text => setPassword(text)}
-                secureTextEntry={true}
-                placeholder="Enter your password"
+          {option == 'Sign In' ? (
+            <>
+              <View
                 style={{
-                  color: 'white',
-                  marginVertical: 10,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 5,
+                  backgroundColor: '#581845',
+                  paddingVertical: 5,
+                  borderRadius: 5,
+                  marginTop: 30,
+                }}>
+                <MaterialIcons
+                  style={{marginLeft: 8}}
+                  name="email"
+                  size={24}
+                  color="white"
+                />
+                <TextInput
+                  value={email}
+                  onChangeText={text => setEmail(text)}
+                  placeholder="Enter your email"
+                  placeholderTextColor={'white'}
+                  style={{
+                    color: 'white',
+                    marginVertical: 10,
+                    width: 300,
+                    fontSize: password ? 17 : 17,
+                  }}
+                />
+              </View>
+              <View style={{}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    gap: 5,
+                    backgroundColor: '#581845',
+                    paddingVertical: 5,
+                    borderRadius: 5,
+                    marginTop: 30,
+                  }}>
+                  <AntDesign
+                    style={{marginLeft: 8}}
+                    name="lock1"
+                    size={24}
+                    color="white"
+                  />
+                  <TextInput
+                    value={password}
+                    onChangeText={text => setPassword(text)}
+                    secureTextEntry={true}
+                    placeholder="Enter your password"
+                    style={{
+                      color: 'white',
+                      marginVertical: 10,
+                      width: 300,
+                      fontSize: password ? 17 : 17,
+                    }}
+                    placeholderTextColor="white"
+                  />
+                </View>
+              </View>
+              <View
+                style={{
+                  marginTop: 12,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}>
+                <Text>Keep me logged in</Text>
+
+                <Text style={{color: '#007FFF', fontWeight: '500'}}>
+                  Forgot Password
+                </Text>
+              </View>
+            </>
+          ) : (
+            <View>
+              <LottieView
+                source={require('../assets/login.json')}
+                style={{
+                  height: 180,
                   width: 300,
-                  //   fontSize: password ? 17 : 17,
+                  alignSelf: 'center',
+                  marginTop: 40,
+                  justifyContent: 'center',
                 }}
-                placeholderTextColor="white"
+                autoPlay
+                loop={true}
+                speed={0.7}
               />
             </View>
-          </View>
-          <View
-            style={{
-              marginTop: 12,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}>
-            <Text>Keep me logged in</Text>
-
-            <Text style={{color: '#007FFF', fontWeight: '500'}}>
-              Forgot Password
-            </Text>
-          </View>
-          {/* </>
-          ) : ( */}
-          <View>
-            <LottieView
-              source={require('../assets/login.json')}
-              style={{
-                height: 180,
-                width: 300,
-                alignSelf: 'center',
-                marginTop: 40,
-                justifyContent: 'center',
-              }}
-              autoPlay
-              loop={true}
-              speed={0.7}
-            />
-          </View>
-          {/* )} */}
+          )}
           <View style={{marginTop: 40}} />
           <Pressable
-          //onPress={createAccount}
-          // style={{
-          //   width: 300,
-          //   backgroundColor:
-          //  //   option == 'Create account' ? '#581845' : 'transparent',
-          //   borderRadius: 6,
-          //   marginLeft: 'auto',
-          //   marginRight: 'auto',
-          //   padding: 15,
-          //  borderRadius: 30,
-          //}}
-          >
+            onPress={createAccount}
+            style={{
+              width: 300,
+              backgroundColor:
+                option == 'Create account' ? '#581845' : 'transparent',
+              borderRadius: 6,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              padding: 15,
+              borderRadius: 30,
+            }}>
             <Text
-            //   style={{
-            //     textAlign: 'center',
-            //     color: option == 'Create account' ? 'white' : 'black',
-            //     fontSize: 16,
-            //     fontWeight: 'bold',
-            //   }}
-            >
+              style={{
+                textAlign: 'center',
+                color: option == 'Create account' ? 'white' : 'black',
+                fontSize: 16,
+                fontWeight: 'bold',
+              }}>
               Create account
             </Text>
           </Pressable>
           <Pressable
-          // onPress={signInUser}
-          // style={{
-          //   width: 300,
-          //   backgroundColor: option == 'Sign In' ? '#581845' : 'transparent',
-          //   borderRadius: 6,
-          //   marginLeft: 'auto',
-          //   marginRight: 'auto',
-          //   padding: 15,
-          //   borderRadius: 30,
-          //   marginTop: 20,
-          // }}
-          >
+            onPress={signInUser}
+            style={{
+              width: 300,
+              backgroundColor: option == 'Sign In' ? '#581845' : 'transparent',
+              borderRadius: 6,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              padding: 15,
+              borderRadius: 30,
+              marginTop: 20,
+            }}>
             <Text
-            //   style={{
-            //     textAlign: 'center',
-            //     color: option == 'Sign In' ? 'white' : 'black',
-            //     fontSize: 16,
-            //     fontWeight: 'bold',
-            //   }}
-            >
+              style={{
+                textAlign: 'center',
+                color: option == 'Sign In' ? 'white' : 'black',
+                fontSize: 16,
+                fontWeight: 'bold',
+              }}>
               Sign In
             </Text>
           </Pressable>
