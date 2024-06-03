@@ -29,7 +29,6 @@ const userSchema = new Schema({
   },
   location: {
     type: String,
-    
   },
   datingPreferences: [
     {

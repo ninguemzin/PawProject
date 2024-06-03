@@ -21,12 +21,13 @@ import GenderScreen from '../screens/GenderScreen';
 import DatingType from '../screens/DatingType';
 import LookingFor from '../screens/LookingFor';
 import HomeTownScreen from '../screens/HomeTownScreen';
-import PhotosScreen from '../screens/PhotoScreen';
+import SendLikeScreen from '../screens/SendLikeScreen';
 import PromptsScreen from '../screens/PromptsScreen';
 import ShowPromptsScreen from '../screens/ShowPromptsScreen';
 import PreFinalScreen from '../screens/PreFinalScreen';
 import PhotoScreen from '../screens/PhotoScreen';
 import {AuthContext} from '../AuthContext';
+import LoginScreen from '../screens/LoginScreen';
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -119,6 +120,11 @@ const StackNavigator = () => {
     return (
       <Stack.Navigator>
         <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
           name="Basic"
           component={BasicInfo}
           options={{headerShown: false}}
@@ -194,6 +200,11 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Main"
           component={BottonTabs}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SendLike"
+          component={SendLikeScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
